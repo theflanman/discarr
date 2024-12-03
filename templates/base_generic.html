@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>{% block title %}Discarr{% endblock %}</title>
+</head>
+
+<body>
+    <div id="header" class="header"></div>
+
+    <div id="sidebar" class="sidebar">
+        {% block sidebar %}
+        <ul>
+            <li><a href="/">Home</a></li>
+        </ul>
+        {% endblock %}
+    </div>
+
+    <div id="content" class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

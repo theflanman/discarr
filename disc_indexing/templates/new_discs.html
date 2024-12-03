@@ -1,0 +1,35 @@
+{% extends "base_generic.html" %}
+
+{% block title %}{{ section.title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ section.title }}</h1>
+    <form action="/add" method="post">
+    <!-- {{ form }} -->
+    {% csrf_token %}
+        <table>
+            <tr>
+                <th></th>
+                <th>Disc Name</th>
+            </tr>
+            {% for field in form %}
+                {% cycle 'check' 'text' as entry silent %}
+                {% if entry == 'check' %}
+                    <tr>
+                    <td>{{ field }}</td>
+                {% else %}
+                    <td>{{ field }}</td>
+                    </tr>
+                {% endif %}
+{#                {{ field }}#}
+            {% endfor %}
+{#            {% for disc in discs %}#}
+{#                <tr>#}
+{#                    <td><input id="enable_{{ disc }}" type="checkbox"></td>#}
+{#                    <td><label for="enable_{{ disc }}" >{{ disc }}</label></td>#}
+{#                </tr>#}
+{#            {% endfor %}#}
+        </table>
+        <input type="submit" value="OK">
+    </form>
+{% endblock %}
